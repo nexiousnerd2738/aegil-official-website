@@ -3,11 +3,14 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Shield, GitBranch, Bell, Activity, Sparkles, Github, Menu, X, ArrowRight } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import { Shield, Sparkles, Github, Menu, X, ArrowRight, Zap, ExternalLink } from 'lucide-react';
+import { siteConfig } from '@/config/site';
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,21 +20,30 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const navLinks = [
+    { name: 'Product', href: '/product' },
+    { name: 'How It Works', href: '/how-it-works' },
+    { name: 'Integrations', href: '/integrations' },
+    { name: 'Security', href: '/security' },
+    { name: 'Docs', href: '/docs' },
+    { name: 'Support', href: '/support' },
+  ];
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#05070e]/85 backdrop-blur-xl border-b border-cyan-500/20 shadow-lg shadow-cyan-950/30 py-3'
-          : 'bg-transparent py-5'
+          ? 'bg-[#05070e]/90 backdrop-blur-xl border-b border-cyan-500/20 shadow-lg shadow-cyan-950/30 py-3'
+          : 'bg-transparent py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Logo & Brand */}
+        {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative w-10 h-10 rounded-lg overflow-hidden border border-cyan-500/30 group-hover:border-cyan-400 transition shadow-md shadow-cyan-500/20">
+          <div className="relative w-9 h-9 rounded-lg overflow-hidden border border-cyan-500/30 group-hover:border-cyan-400 transition shadow-md shadow-cyan-500/20">
             <Image
               src="/images/aegil-logo.png"
-              alt="AEGIL Shield Logo"
+              alt="AEGIS Shield Logo"
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-300"
               priority
@@ -39,125 +51,105 @@ export const Navbar: React.FC = () => {
           </div>
           <div className="flex flex-col">
             <div className="flex items-center gap-1.5">
-              <span className="font-extrabold text-xl tracking-wider text-white font-mono group-hover:text-cyan-400 transition">
-                AEGIL
+              <span className="font-extrabold text-lg tracking-wider text-white font-mono group-hover:text-cyan-400 transition">
+                AEGIS
               </span>
               <span className="px-1.5 py-0.2 text-[9px] font-semibold tracking-widest bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 rounded">
                 v1.0
               </span>
             </div>
-            <span className="text-[10px] tracking-widest text-slate-400 font-mono uppercase">
+            <span className="text-[9px] tracking-widest text-slate-400 font-mono uppercase hidden sm:block">
               Understand • Predict • Defend
             </span>
           </div>
         </Link>
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-          <Link href="#architecture" className="hover:text-cyan-400 transition">
-            Continuous Loop
-          </Link>
-          <Link href="#capabilities" className="hover:text-cyan-400 transition">
-            Capabilities
-          </Link>
-          <Link href="#simulator" className="hover:text-cyan-400 transition flex items-center gap-1.5">
-            <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-            <span>Interactive Demo</span>
-          </Link>
-          <Link href="#metrics" className="hover:text-cyan-400 transition">
-            Performance
-          </Link>
-          <Link href="#security" className="hover:text-cyan-400 transition">
-            Security & Trust
-          </Link>
+        {/* Desktop Nav Items */}
+        <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300">
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href || (link.href !== '/' && pathname?.startsWith(link.href));
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`transition-colors duration-150 ${
+                  isActive ? 'text-cyan-400 font-semibold' : 'hover:text-cyan-300 text-slate-300'
+                }`}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Right CTA Actions */}
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden sm:flex items-center gap-3">
           <a
-            href="https://github.com/nexiousnerd2738/Aegis"
+            href={siteConfig.links.github}
             target="_blank"
             rel="noreferrer"
             className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/60 transition border border-transparent hover:border-slate-700"
-            title="View on GitHub"
+            title="GitHub Repository"
           >
             <Github className="w-5 h-5" />
           </a>
-          <a
-            href="#simulator"
-            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-semibold text-sm transition shadow-lg shadow-cyan-500/25 hover:shadow-cyan-400/40"
+          <Link
+            href="/integrations/vercel"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-400 to-blue-600 hover:from-cyan-300 hover:to-blue-500 text-slate-950 font-bold text-xs sm:text-sm transition shadow-lg shadow-cyan-500/25 hover:shadow-cyan-400/40"
           >
-            <span>Launch Live Demo</span>
-            <ArrowRight className="w-4 h-4" />
-          </a>
+            <Zap className="w-4 h-4 fill-current" />
+            <span>Connect Vercel</span>
+          </Link>
         </div>
 
-        {/* Mobile menu button */}
-        <div className="md:hidden flex items-center gap-2">
+        {/* Mobile Toggle */}
+        <div className="lg:hidden flex items-center gap-2">
+          <Link
+            href="/integrations/vercel"
+            className="px-3 py-1.5 rounded-lg bg-cyan-500 text-slate-950 font-bold text-xs"
+          >
+            Connect
+          </Link>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 rounded-lg text-slate-400 hover:text-white bg-slate-900 border border-slate-800"
+            aria-label="Toggle navigation menu"
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6 text-cyan-400" />}
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5 text-cyan-400" />}
           </button>
         </div>
       </div>
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#05070e]/95 border-b border-cyan-500/20 px-6 py-6 space-y-4 animate-in fade-in slide-in-from-top-4 duration-200">
-          <Link
-            href="#architecture"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block text-slate-200 hover:text-cyan-400 font-medium text-base py-2"
-          >
-            Continuous Loop Architecture
-          </Link>
-          <Link
-            href="#capabilities"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block text-slate-200 hover:text-cyan-400 font-medium text-base py-2"
-          >
-            Capabilities
-          </Link>
-          <Link
-            href="#simulator"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block text-cyan-300 font-medium text-base py-2"
-          >
-            Interactive Threat Simulator
-          </Link>
-          <Link
-            href="#metrics"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block text-slate-200 hover:text-cyan-400 font-medium text-base py-2"
-          >
-            Performance & Benchmarks
-          </Link>
-          <Link
-            href="#security"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block text-slate-200 hover:text-cyan-400 font-medium text-base py-2"
-          >
-            Security & Compliance
-          </Link>
-          <div className="pt-4 border-t border-slate-800 flex flex-col gap-3">
+        <div className="lg:hidden bg-[#05070e]/98 border-b border-cyan-500/20 px-6 py-6 space-y-3 animate-in fade-in slide-in-from-top-4 duration-200 shadow-2xl">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setMobileMenuOpen(false)}
+              className="block text-slate-200 hover:text-cyan-400 font-medium text-base py-1.5 border-b border-slate-900"
+            >
+              {link.name}
+            </Link>
+          ))}
+          <div className="pt-3 flex flex-col gap-2.5">
+            <Link
+              href="/integrations/vercel"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-cyan-500 text-slate-950 font-bold text-sm"
+            >
+              <Zap className="w-4 h-4 fill-current" />
+              <span>Connect Vercel Target</span>
+            </Link>
             <a
-              href="https://github.com/nexiousnerd2738/Aegis"
+              href={siteConfig.links.github}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-200 font-medium"
+              className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-300 font-medium text-sm"
             >
               <Github className="w-4 h-4" />
               <span>GitHub Repository</span>
-            </a>
-            <a
-              href="#simulator"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-cyan-500 text-slate-950 font-bold"
-            >
-              <span>Launch Live Simulator</span>
-              <ArrowRight className="w-4 h-4" />
             </a>
           </div>
         </div>
