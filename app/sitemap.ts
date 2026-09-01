@@ -9,11 +9,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/features',
     '/how-it-works',
     '/integrations',
-    '/integrations/vercel',
     '/docs',
     '/docs/getting-started',
-    '/docs/vercel',
+    '/docs/integrations',
+    '/docs/integrations/vercel',
+    '/docs/integrations/vercel/setup',
+    '/docs/integrations/vercel/permissions',
+    '/docs/integrations/vercel/disconnect',
+    '/docs/integrations/vercel/troubleshooting',
     '/docs/security',
+    '/docs/security/report',
     '/docs/data-handling',
     '/docs/permissions',
     '/docs/troubleshooting',
@@ -30,12 +35,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/security/report',
     '/support',
     '/support/contact',
+    '/support/troubleshooting',
   ];
 
   return routes.map((route) => ({
     url: `${siteConfig.url}${route}`,
     lastModified: new Date(siteConfig.lastUpdated),
     changeFrequency: 'weekly' as const,
-    priority: route === '' ? 1.0 : route.startsWith('/integrations/vercel') || route.startsWith('/docs') ? 0.8 : 0.6,
+    priority:
+      route === ''
+        ? 1.0
+        : route.startsWith('/docs/integrations/vercel') || route.startsWith('/docs')
+        ? 0.8
+        : 0.6,
   }));
 }

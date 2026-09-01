@@ -61,9 +61,9 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/integrations/vercel" className="hover:text-cyan-400 transition flex items-center gap-1">
+                <Link href="/docs/integrations/vercel" className="hover:text-cyan-400 transition flex items-center gap-1">
                   <span>AEGIS for Vercel</span>
-                  <span className="px-1.5 py-0.2 rounded text-[9px] bg-cyan-500/20 text-cyan-300 font-mono">NEW</span>
+                  <span className="px-1.5 py-0.2 rounded text-[9px] bg-cyan-500/20 text-cyan-300 font-mono">ACTIVE</span>
                 </Link>
               </li>
             </ul>
@@ -86,12 +86,17 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/docs/vercel" className="hover:text-cyan-400 transition">
+                <Link href="/docs/integrations/vercel" className="hover:text-cyan-400 transition">
+                  Vercel Integration
+                </Link>
+              </li>
+              <li>
+                <Link href="/docs/integrations/vercel/setup" className="hover:text-cyan-400 transition">
                   Vercel Setup Guide
                 </Link>
               </li>
               <li>
-                <Link href="/docs/permissions" className="hover:text-cyan-400 transition">
+                <Link href="/docs/integrations/vercel/permissions" className="hover:text-cyan-400 transition">
                   Permissions Matrix
                 </Link>
               </li>
@@ -130,7 +135,7 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/security/report" className="hover:text-cyan-400 transition">
+                <Link href="/docs/security/report" className="hover:text-cyan-400 transition">
                   Vulnerability Disclosure
                 </Link>
               </li>

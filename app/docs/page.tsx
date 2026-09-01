@@ -16,9 +16,9 @@ const DOCS_CARDS = [
   {
     title: 'AEGIS for Vercel',
     description: 'Step-by-step instructions for connecting your Vercel team, reviewing scopes, and synchronizing project deployments.',
-    href: '/docs/vercel',
+    href: '/docs/integrations/vercel',
     icon: Zap,
-    tag: 'Connector Guide',
+    tag: 'Canonical Integration',
   },
   {
     title: 'Permissions Matrix',

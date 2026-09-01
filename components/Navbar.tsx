@@ -94,7 +94,7 @@ export const Navbar: React.FC = () => {
             <Github className="w-5 h-5" />
           </a>
           <Link
-            href="/integrations/vercel"
+            href="/docs/integrations/vercel"
             className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-400 to-blue-600 hover:from-cyan-300 hover:to-blue-500 text-slate-950 font-bold text-xs sm:text-sm transition shadow-lg shadow-cyan-500/25 hover:shadow-cyan-400/40"
           >
             <Zap className="w-4 h-4 fill-current" />
@@ -105,7 +105,7 @@ export const Navbar: React.FC = () => {
         {/* Mobile Toggle */}
         <div className="lg:hidden flex items-center gap-2">
           <Link
-            href="/integrations/vercel"
+            href="/docs/integrations/vercel"
             className="px-3 py-1.5 rounded-lg bg-cyan-500 text-slate-950 font-bold text-xs"
           >
             Connect
@@ -135,7 +135,7 @@ export const Navbar: React.FC = () => {
           ))}
           <div className="pt-3 flex flex-col gap-2.5">
             <Link
-              href="/integrations/vercel"
+              href="/docs/integrations/vercel"
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-cyan-500 text-slate-950 font-bold text-sm"
             >

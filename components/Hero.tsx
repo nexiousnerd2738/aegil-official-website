@@ -41,7 +41,7 @@ export const Hero: React.FC = () => {
             <div className="space-y-3 pt-2">
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
                 <Link
-                  href="/integrations/vercel"
+                  href="/docs/integrations/vercel"
                   className="flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-600 hover:from-cyan-300 hover:to-blue-500 text-slate-950 font-bold text-sm transition shadow-xl shadow-cyan-500/30 hover:shadow-cyan-400/50 hover:scale-[1.02]"
                 >
                   <Zap className="w-4 h-4 fill-current" />
