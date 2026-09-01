@@ -31,6 +31,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/legal/cookie-policy',
     '/legal/data-processing',
     '/legal/subprocessors',
+    '/configure',
+    '/vercel/import',
     '/security',
     '/security/report',
     '/support',
