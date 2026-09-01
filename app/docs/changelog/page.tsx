@@ -29,7 +29,7 @@ export default function ChangelogDocsPage() {
                 v1.0.0
               </span>
               <h3 className="text-lg font-bold text-white m-0">
-                Official Competition Release & Closed-Loop Defense Engine
+                Official v1.0 Production Release & Closed-Loop Defense Engine
               </h3>
             </div>
             <span className="text-xs font-mono text-slate-400">

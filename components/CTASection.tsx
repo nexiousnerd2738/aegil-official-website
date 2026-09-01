@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { ArrowRight, Github, Zap, Shield, Sparkles } from 'lucide-react';
+import { ArrowRight, Github, Zap, Shield, Sparkles, Terminal } from 'lucide-react';
 
 export const CTASection: React.FC = () => {
   return (
@@ -9,9 +9,9 @@ export const CTASection: React.FC = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-cyan-500/10 rounded-full blur-[130px] pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-8">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-mono font-bold uppercase shadow-inner">
-          <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-          <span>Competition-Ready Blue Team Platform</span>
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-mono font-semibold uppercase mb-6 shadow-inner shadow-cyan-500/20">
+          <Terminal className="w-3.5 h-3.5" />
+          <span>Production-Ready Autonomous Cyber Defense Platform</span>
         </div>
 
         <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">

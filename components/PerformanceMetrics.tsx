@@ -33,7 +33,7 @@ const METRICS: MetricItem[] = [
     value: '1-Click',
     label: 'Deterministic Demo Reset',
     description: 'Full platform state resets to clean baseline in under 1 second for repeatable demonstrations.',
-    badge: 'COMPETITION READY',
+    badge: 'PRODUCTION READY',
   },
 ];
 

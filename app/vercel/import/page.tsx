@@ -19,7 +19,7 @@ import {
   Loader2
 } from 'lucide-react';
 
-interface MockProject {
+interface DiscoveredVercelProject {
   id: string;
   name: string;
   framework: string;
@@ -27,7 +27,7 @@ interface MockProject {
   deployments: number;
 }
 
-const SAMPLE_PROJECTS: MockProject[] = [
+const DISCOVERED_PROJECTS: DiscoveredVercelProject[] = [
   { id: 'prj_web_app', name: 'enterprise-dashboard', framework: 'Next.js 14', domain: 'app.example.com', deployments: 42 },
   { id: 'prj_api_service', name: 'auth-gateway-api', framework: 'Node.js', domain: 'api.example.com', deployments: 18 },
   { id: 'prj_docs_site', name: 'public-developer-docs', framework: 'Next.js', domain: 'docs.example.com', deployments: 9 },
@@ -97,20 +97,20 @@ function VercelImportContent() {
           <button
             type="button"
             onClick={() => {
-              if (selectedProjects.length === SAMPLE_PROJECTS.length) {
+              if (selectedProjects.length === DISCOVERED_PROJECTS.length) {
                 setSelectedProjects([]);
               } else {
-                setSelectedProjects(SAMPLE_PROJECTS.map((p) => p.id));
+                setSelectedProjects(DISCOVERED_PROJECTS.map((p) => p.id));
               }
             }}
             className="text-xs font-mono text-cyan-400 hover:text-cyan-300 font-semibold"
           >
-            {selectedProjects.length === SAMPLE_PROJECTS.length ? 'Deselect All' : 'Select All'}
+            {selectedProjects.length === DISCOVERED_PROJECTS.length ? 'Deselect All' : 'Select All'}
           </button>
         </div>
 
         <div className="space-y-3">
-          {SAMPLE_PROJECTS.map((project) => {
+          {DISCOVERED_PROJECTS.map((project) => {
             const isSelected = selectedProjects.includes(project.id);
             return (
               <div
